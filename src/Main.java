@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("\n********* class CAR *********");
@@ -7,18 +9,15 @@ public class Main {
                 1.7,
                 "желтый",
                 2015,
-                "Россия", //String productionCountry
-                "механическая",   //String transmission
-                "седан",    //String bodyType,
-                "123456789",   //String regNumber,
-                5, // int numberOfSeats,
-                true, //        boolean summerTyres,
-
-                //КАК ЧЕРЕЗ КОНСТРУКТОР ВНЕСТИ ДАННЫЕ ПО ВЛОЖЕННЫМ КЛАССАМ Insurance & Key ???
-                (false, false),     //public Key() {this(false, false);
-                (2022 - 09 - 13, 10000.00, 123456789)   // public Insurance(LocalDate expireDate, double cost, String insuranceNumber)
+                "Россия",
+                "механическая",
+                "седан",
+                "123456789",
+                5,
+                true,
+                new Car.Key(false, false),
+                new Car.Insurance(LocalDate.of(2020, 9,  13), 10000.00, "123456789")      // public Insurance(LocalDate expireDate, double cost, String insuranceNumber)
         );
-
 
         Car audiA8 = new Car(
                 "Audi",
@@ -29,18 +28,11 @@ public class Main {
                 "Германия"
         );
         audiA8.setTransmission("автомат");
-
-        //КАК ВНЕСТИ ДАТУ????
-        //audiA8.setInsurance(new Car.Insurance(2016-05-20, 30000, "123456789" );
-
-
-        audiA8.getInsurance().
-
-        checkExpireDate();
-        audiA8.getInsurance().
-
-        checkInsuranceNumber();
+        audiA8.setInsurance(new Car.Insurance(LocalDate.of(2022, 5, 11), 30_000, "999999999"));
         audiA8.setKey(new Car.Key(true, true));
+
+        System.out.println(audiA8.toString() + " " + audiA8.getInsurance() + audiA8.getKey());
+
 
         Car bmwZ8 = new Car(
                 "BMW",
@@ -52,11 +44,6 @@ public class Main {
         );
         bmwZ8.setSummerTyres(false);
 
-
-        /***** CAR СТРАХОВКА И ДОСТУП ****/
-        //КАК ВНЕСТИ ДАТУ????
-        Car.Insurance ladaGrandeIns = new Car.Insurance(2022 - 09 - 13, 3263.23, "#2398");
-        System.out.println(ladaGrandeIns);
 
 
     }

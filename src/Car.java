@@ -16,6 +16,9 @@ public class Car {
     private Key key;
     private Insurance insurance;
 
+    public static void checkExpireDate(Car ladaGrande) {
+    }
+
     /***** CLASS KEY ВЛОЖЕННЫЙ ****/
     public static class Key {
         private final boolean remoteStartEngine;
@@ -51,7 +54,9 @@ public class Car {
             } else {
                 this.expireDate = expireDate;
             }
+
             this.cost = cost;
+
             if (insuranceNumber == null) {
                 this.insuranceNumber = "123456789";
             } else {
@@ -183,6 +188,11 @@ public class Car {
                         + "регистрационный номер: " + getRegNumber() + "; \n"
                         + "количество мест " + getNumberOfSeats() + "; \n"
                         + (isSummerTyres() ? "летняя" : "зимняя") + " резина; \n"
+                        + (getKey().isKeylessAccess() ? "бесключевой доступ" : "ключевой доступ") + "; \n"
+                        + (getKey().isRemoteStartEngine() ? "удаленный запуск двигателя есть" : "удаленный запуск двигателя отсутствует") + "; \n"
+                        + "номер страховки: " + getInsurance().getInsuranceNumber() + "; \n"
+                        + "стоимость страховки: " + getInsurance().getCost() + "; \n"
+                        + "срок действия: " + getInsurance().getExpireDate()
         );
     }
 
